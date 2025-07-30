@@ -1,14 +1,12 @@
-// @flow
-
 import { pointsToLevels, milestoneToPoints, trackIds, totalPointsFromMilestoneMap } from '../constants'
-import type { MilestoneMap } from '../constants'
+// import type { MilestoneMap } from '../constants'
 import React from 'react'
 
-type Props = {
-  milestoneByTrack: MilestoneMap
-}
+// type Props = {
+//   milestoneByTrack: MilestoneMap
+// }
 
-class PointSummaries extends React.Component<Props> {
+class PointSummaries extends React.Component {
   render() {
     const totalPoints = totalPointsFromMilestoneMap(this.props.milestoneByTrack)
 

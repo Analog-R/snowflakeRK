@@ -1,16 +1,14 @@
-// @flow
-
 import { tracks, milestones, categoryColorScale } from '../constants'
 import React from 'react'
-import type { MilestoneMap, TrackId, Milestone } from '../constants'
+// import type { MilestoneMap, TrackId, Milestone } from '../constants'
 
-type Props = {
-  milestoneByTrack: MilestoneMap,
-  trackId: TrackId,
-  handleTrackMilestoneChangeFn: (TrackId, Milestone) => void
-}
+// type Props = {
+//   milestoneByTrack: MilestoneMap,
+//   trackId: TrackId,
+//   handleTrackMilestoneChangeFn: (TrackId, Milestone) => void
+// }
 
-class Track extends React.Component<Props> {
+class Track extends React.Component {
   render() {
     const track = tracks[this.props.trackId]
     const currentMilestoneId = this.props.milestoneByTrack[this.props.trackId]
