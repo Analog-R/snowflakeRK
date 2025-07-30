@@ -4,15 +4,43 @@
 
 SnowflakeRK is a web-based interactive tool for visualizing and tracking engineering career progression based on Medium's engineering growth framework. The application provides a comprehensive system for evaluating engineers across multiple skill tracks and career levels.
 
+## Quick Start
+
+### Prerequisites
+- Node.js 18.0.0 or higher
+- npm (comes with Node.js) or Yarn
+
+### Installation & Running
+```bash
+# Clone the repository
+git clone https://github.com/KwokR/snowflakeRK.git
+cd snowflakeRK
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open browser to http://localhost:3000
+```
+
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run export` - Export static site
+
 ## Technical Architecture
 
 ### Technology Stack
-- **Frontend Framework**: Next.js 9.0.7
-- **UI Library**: React 16.10.2
-- **Data Visualization**: D3.js 4.11.0
-- **Type System**: Flow (Facebook's static type checker)
-- **Package Manager**: Yarn
+- **Frontend Framework**: Next.js 13.5.6
+- **UI Library**: React 18.2.0 with React DOM 18.2.0
+- **Data Visualization**: D3.js 7.8.5
+- **Type System**: JavaScript (Flow types removed for compatibility)
+- **Package Manager**: npm (Yarn compatible)
 - **Build System**: Next.js built-in build system
+- **Node.js**: Minimum version 18.0.0
 
 ### Application Structure
 ```
@@ -113,35 +141,44 @@ The application tracks 16 distinct engineering tracks organized into 3 categorie
 - Modern browsers supporting ES6+ features
 - SVG support for D3.js visualizations
 - CSS-in-JS support (styled-jsx)
+- React 18 compatible browsers
 
 ### Development Environment
-- Node.js environment for Next.js
-- Yarn package manager
-- Flow type checker for static analysis
-- Development server with hot reloading
+- Node.js 18.0.0 or higher
+- npm package manager (or Yarn if preferred)
+- Development server with hot reloading and Fast Refresh
+- Modern JavaScript (ES2020+) support
 
 ### Build and Deployment
-- Static site generation via `next export`
-- No server-side requirements
-- Deployable to any static hosting service
+- Static site generation via `next build && next export`
+- Server-side rendering support with `next start`
+- Development mode with `next dev`
+- No backend server requirements for static deployment
+- Deployable to any static hosting service (Vercel, Netlify, GitHub Pages, etc.)
 
 ## Data Model
 
-### Core Types
+### Core Types (JavaScript Objects)
 ```javascript
-type TrackId = 'MOBILE' | 'WEB_CLIENT' | 'FOUNDATIONS' | ... // 16 tracks
-type Milestone = 0 | 1 | 2 | 3 | 4 | 5
-type MilestoneMap = { [TrackId]: Milestone }
+// TrackId: String literals representing 16 different tracks
+// 'MOBILE' | 'WEB_CLIENT' | 'FOUNDATIONS' | 'SERVERS' | 
+// 'PROJECT_MANAGEMENT' | 'COMMUNICATION' | 'CRAFT' | 'INITIATIVE' |
+// 'CAREER_DEVELOPMENT' | 'ORG_DESIGN' | 'WELLBEING' | 'ACCOMPLISHMENT' |
+// 'MENTORSHIP' | 'EVANGELISM' | 'RECRUITING' | 'COMMUNITY'
+
+// Milestone: Numbers 0-5 representing skill levels
+// MilestoneMap: Object mapping TrackId to Milestone values
 ```
 
 ### Application State
 ```javascript
-type SnowflakeAppState = {
-  milestoneByTrack: MilestoneMap,
-  name: string,
-  title: string,
-  focusedTrackId: TrackId
-}
+// SnowflakeAppState structure:
+// {
+//   milestoneByTrack: Object, // Maps track IDs to milestone levels (0-5)
+//   name: String,             // User's name
+//   title: String,            // Selected job title
+//   focusedTrackId: String    // Currently selected track
+// }
 ```
 
 ## User Experience Requirements
@@ -158,6 +195,22 @@ type SnowflakeAppState = {
 3. **Clean Typography**: Readable fonts and appropriate sizing
 4. **Professional Appearance**: Suitable for workplace use
 
+## Recent Modernization Changes
+
+### Technology Updates (2024)
+1. **React Upgrade**: Updated from React 16.10.2 to React 18.2.0
+2. **Next.js Upgrade**: Updated from Next.js 9.0.7 to Next.js 13.5.6
+3. **D3.js Upgrade**: Updated from D3.js 4.11.0 to D3.js 7.8.5
+4. **Flow Removal**: Removed Flow type annotations for better compatibility
+5. **Node.js Requirement**: Now requires Node.js 18.0.0 or higher
+6. **Build Scripts**: Updated build and development scripts
+
+### Compatibility Improvements
+1. **Modern JavaScript**: Uses current JavaScript standards
+2. **Fast Refresh**: Improved development experience with Next.js 13
+3. **Better Performance**: Leverages React 18 concurrent features
+4. **Enhanced D3**: Uses latest D3.js with improved APIs
+
 ## Constraints and Limitations
 
 ### Technical Constraints
@@ -165,11 +218,13 @@ type SnowflakeAppState = {
 2. **Browser Dependency**: Requires modern browser with JavaScript enabled
 3. **Static Data**: Track definitions and criteria are hardcoded
 4. **No Persistence**: Data only persists in URL hash
+5. **Node.js Version**: Requires Node.js 18.0.0 or higher for development
 
 ### Business Constraints
 1. **Deprecated Tool**: Medium no longer actively uses this framework
 2. **Open Source**: Available for community use and modification
 3. **No Support**: No official maintenance or support from Medium
+4. **Security Vulnerabilities**: Legacy dependencies may have known vulnerabilities
 
 ## Success Criteria
 
@@ -196,8 +251,10 @@ type SnowflakeAppState = {
 6. **Mobile Optimization**: Touch-friendly mobile interface
 
 ### Technical Improvements
-1. **Modern React**: Upgrade to React Hooks and modern patterns
-2. **TypeScript**: Migration from Flow to TypeScript
+1. **Modern React Patterns**: Migrate to React Hooks and functional components
+2. **TypeScript**: Add TypeScript for better type safety (replacing removed Flow)
 3. **Accessibility**: Enhanced screen reader and keyboard support
-4. **Performance**: Code splitting and optimization
+4. **Performance**: Code splitting and optimization with Next.js 13 features
 5. **Testing**: Comprehensive test suite implementation
+6. **Security**: Update dependencies to resolve security vulnerabilities
+7. **Component Library**: Modernize to use contemporary React patterns
